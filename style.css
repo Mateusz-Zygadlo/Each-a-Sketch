@@ -22,7 +22,6 @@
     width: 600px;
     height: 600px;
     margin-top: 10px;
-    background-color: bisque;
+    background-color: white;
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
 }
