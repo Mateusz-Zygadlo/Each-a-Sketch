@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Each a Sketch</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <section class="container">
-        <section class="controllers">
-            <section class="controllers-elements">
-                <button value="red">Red</button>
-                <button value="green">Green</button>
-                <button value="blue">Blue</button>
-                <button value="rgb"><input type="color"></button>
-                <button value="clear">Clear</button>
-                <section class="scoreSection">
-                    <input type="range" min="5" max="64" value="16" class="slider">
-                    <p class="score"></p>
-                </section>
-            </section>
-        </section>
-        <section class="sketch gridC"></section>
-    </section>
+    <div class="container">
+        <div class="controlls">
+            <input type="color" class="choose">
+            <button value="black" class="choose">black</button>
+            <button value="eraser" class="choose">eraser</button>
+            <button value="rgb" class="choose">rgb</button>
+            <button value="clear" class="choose">clear</button>
+            <div class="changeNumbers">
+                <input type="range" min="10" max="50" class="input">
+                <p class="score"></p>
+            </div>
+        </div>
+        <div class="center">
+            <div class="grid t"></div>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>

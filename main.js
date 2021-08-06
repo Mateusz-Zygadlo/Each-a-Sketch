@@ -1,73 +1,70 @@
-let sketch = document.querySelector('.sketch');
-let htmlRangeSlider = document.querySelector('.slider');
-let score = document.querySelector('.score');
-let k = htmlRangeSlider.value;
-
-function createDivs(n){
-    for(let i = 0; i < n; i++){
-        for(let j = 0; j < n; j++){
-            let div1 = document.createElement('div');
-            sketch.appendChild(div1);
-        }
-    }
-}
-createDivs(10);
-
-let div = document.querySelectorAll('div');
-
-htmlRangeSlider.addEventListener('change', () => {
-    k = htmlRangeSlider.value;
-    score.textContent = k;
-    if(k == 10){
-        console.log('no-change');
-    }else{
-        console.log(k);
-    }
-})
+const grid = document.querySelector('.grid');
+const score = document.querySelector('.score');
+const input = document.querySelector('.input');
 let count = 1;
 
-function setId(){
+let divs;
+let itemId;
+let bgColor;
+
+function createDiv(n){
+    for(let i = 0; i < n; i++){
+        for(let j = 0; j < n; j++){
+            let divOne = document.createElement('div');
+            divOne.classList.add('b');
+            grid.appendChild(divOne);
+        }
+    }
+    addId();
+    divs = document.getElementsByClassName('b');
+}
+function addId(){
+    let div = document.querySelectorAll('.b');
     div.forEach(item => {
         item.dataset.id = count;
         count++;
     })
+    count = 1;
 }
-setId();
-
-let itemId;
-let bgColor = 'blue';
-
-function getId(){
-    div.forEach((item) => {
-        item.addEventListener('mousemove', (e) => {
-            itemId = e;
-            changeBackground();
-            count++;
+function click(){
+    [...divs].forEach(elem => {
+        elem.addEventListener('mousemove', (e) => {
+            itemId = e.target;
+            changeColor();
         })
     })
 }
-getId();
-
-function changeBackground(){
-    let bg = itemId.target;
+function changeColor(){
+    bg = itemId;
     bg.style.backgroundColor = bgColor;
 }
-let input = document.querySelector('input');
-let btns = document.querySelectorAll('button');
+function clear(){
+    [...divs].forEach(div => {
+        div.style.backgroundColor = 'white';
+    })
+}
 
 function setButton(){
-    btns.forEach(btn => {
+    let buttons = document.getElementsByClassName('choose');
+
+    [...buttons].forEach(btn => {
         btn.addEventListener('click', (e) => {
             bgColor = e.target.value;
-            if(bgColor == 'rgb'){
-                bgColor = input.value;
-            }
-            if(bgColor == 'clear'){
-                div.forEach(elem => {
-                    elem.style.backgroundColor = 'white';
-                })
+            if(bgColor == 'eraser'){
+                bgColor = 'white';
+            }else if(bgColor == 'clear'){
+                clear();
             }
         })
     })
 }
 setButton();
+
+input.addEventListener('change', () => {
+    grid.textContent = '';
+    grid.classList.remove('t');
+    grid.style.gridTemplateColumns = `repeat(${input.value}, 1fr)`;
+    score.textContent = input.value;
+    createDiv(input.value);
+    click();
+})
