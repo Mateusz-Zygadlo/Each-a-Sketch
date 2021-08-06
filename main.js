@@ -1,9 +1,12 @@
 let sketch = document.querySelector('.sketch');
 let htmlRangeSlider = document.querySelector('.slider');
+let score = document.querySelector('.score');
 let k = htmlRangeSlider.value;
+
 
 htmlRangeSlider.addEventListener('change', () => {
     k = htmlRangeSlider.value;
+    score.textContent = k;
 })
 
 function createDivs(n){
@@ -14,13 +17,18 @@ function createDivs(n){
         }
     }
 }
-
-createDivs(k);
+createDivs(5);
 
 sketch.style.gridTemplateColumns = `repeat(${k}, 1fr)`;
 
 let div = document.querySelectorAll('div');
 let count = 1;
+
+function deleteDiv(){
+    div.forEach(item => {
+        item.remove();
+    })
+}
 
 function setId(){
     div.forEach(item => {
@@ -38,6 +46,7 @@ function getId(){
         item.addEventListener('mousemove', (e) => {
             itemId = e;
             changeBackground();
+            count++;
         })
     })
 }
