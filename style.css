@@ -9,12 +9,33 @@
     background-color: aqua;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+
 }
 .controllers{
-    width: 100%;
-    height: 50px;
+    width: 600px;
+    min-height: 300px;
+    margin: 50px;
     background-color: azure;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.controllers-elements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.controllers-elements button{
+    width: 60px;
+    height: 25px;
+    background-color: blue;
+    color: white;
+    border: none;
+    margin: 20px;
+}
+.scoreSection{
     display: flex;
     justify-content: space-around;
 }
@@ -24,4 +45,7 @@
     margin-top: 10px;
     background-color: white;
     display: grid;
+}
+.gridC{
+    grid-template-columns: repeat(10, 1fr);
 }

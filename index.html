@@ -11,15 +11,19 @@
     
     <section class="container">
         <section class="controllers">
-            <button value="red">Red</button>
-            <button value="green">Green</button>
-            <button value="blue">Blue</button>
-            <button value="rgb"><input type="color"></button>
-            <button value="clear">Clear</button>
-            <input type="range" min="5" max="100" value="16" class="slider">
-            <p class="score"></p>
+            <section class="controllers-elements">
+                <button value="red">Red</button>
+                <button value="green">Green</button>
+                <button value="blue">Blue</button>
+                <button value="rgb"><input type="color"></button>
+                <button value="clear">Clear</button>
+                <section class="scoreSection">
+                    <input type="range" min="5" max="64" value="16" class="slider">
+                    <p class="score"></p>
+                </section>
+            </section>
         </section>
-        <section class="sketch"></section>
+        <section class="sketch gridC"></section>
     </section>
 
     <script src="main.js"></script>
