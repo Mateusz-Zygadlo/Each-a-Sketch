@@ -7,6 +7,7 @@ let divs;
 let itemId;
 let bgColor;
 let rgbRandom;
+let test;
 
 function createDiv(n){
     for(let i = 0; i < n; i++){
@@ -31,8 +32,8 @@ function click(){
     [...divs].forEach(elem => {
         elem.addEventListener('mouseover', (e) => {
             itemId = e.target;
-            changeColor();
             rgbRandom = randomRgb();
+            changeColor();
         })
     })
 }
@@ -42,12 +43,16 @@ function changeColor(){
 }
 
 function randomRgb(){
-    let red = Math.floor(Math.random() * 256);
-    let green = Math.floor(Math.random() * 256);
-    let blue = Math.floor(Math.random() * 256);
+    const red = Math.floor(Math.random() * 255);
+    const green = Math.floor(Math.random() * 255);
+    const blue = Math.floor(Math.random() * 255);
 
     return `rgb(${red}, ${green}, ${blue})`;
-
+}
+function backgroundRgb(){
+    setInterval(() => {
+        bgColor = rgbRandom;
+    }, 1);
 }
 
 function clear(){
@@ -62,11 +67,15 @@ function setButton(){
     [...buttons].forEach(btn => {
         btn.addEventListener('click', (e) => {
             bgColor = e.target.value;
+            console.log(bgColor);
             if(bgColor == 'eraser'){
+                bgColor = '';
                 bgColor = 'white';
             }else if(bgColor == 'clear'){
                 clear();
             }else if(bgColor == 'rgb'){
+                bgColor = backgroundRgb();
+            }else if(bgColor = 'randomColor'){
                 bgColor = rgbRandom;
             }
         })
