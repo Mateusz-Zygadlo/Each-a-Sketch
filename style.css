@@ -49,7 +49,7 @@ body{
     margin: 20px;
     cursor: pointer;
 }
-.t{
+.gridColumn{
     grid-template-columns: repeat(10, 1fr);
 }
 .input{

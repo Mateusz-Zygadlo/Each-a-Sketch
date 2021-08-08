@@ -10,7 +10,7 @@ let count = 1;
 let divs;
 let itemId;
 let bgColor;
-let rgbRandom = 'orange';
+let rgbRandom;
 let randomColor;
 
 function createandClassDiv(n){
@@ -73,6 +73,7 @@ function setButton(){
                 bgColor = 'white';
             }else if(bgColor == 'clear'){
                 bgColor = clear();
+                bgColor = 'black';
             }else if(bgColor == 'rgb'){
                 bgColor = 'rgb';
             }else if(bgColor == 'randomColor'){
@@ -85,7 +86,7 @@ setButton();
 
 input.addEventListener('change', () => {
     grid.textContent = '';
-    grid.classList.remove('t');
+    grid.classList.remove('gridColumn');
     grid.style.gridTemplateColumns = `repeat(${input.value}, 1fr)`;
     score.textContent = input.value;
     createandClassDiv(input.value);
@@ -94,4 +95,8 @@ input.addEventListener('change', () => {
 
 buttonStart.addEventListener('click', () => {
     startPage.classList.toggle('popup');
+    grid.style.gridTemplateColumns = `repeat(16, 1fr)`;
+    score.textContent = 16;
+    createandClassDiv(16);
+    mouseOver();
 })
