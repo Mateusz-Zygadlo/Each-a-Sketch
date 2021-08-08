@@ -39,6 +39,17 @@ function click(){
 }
 function changeColor(){
     bg = itemId;
+    if(bgColor == 'rgb'){
+        const red = Math.floor(Math.random() * 255);
+        const green = Math.floor(Math.random() * 255);
+        const blue = Math.floor(Math.random() * 255);
+    
+        let final = `rgb(${red}, ${green}, ${blue})`;
+
+        bg.style.backgroundColor = final;
+    }else if(bgColor == 'clear'){
+        bgColor = 'white';
+    }
     bg.style.backgroundColor = bgColor;
 }
 
@@ -69,12 +80,11 @@ function setButton(){
             bgColor = e.target.value;
             console.log(bgColor);
             if(bgColor == 'eraser'){
-                bgColor = '';
                 bgColor = 'white';
             }else if(bgColor == 'clear'){
-                clear();
+                bgColor = 'white';
             }else if(bgColor == 'rgb'){
-                bgColor = backgroundRgb();
+                bgColor = 'rgb';
             }else if(bgColor = 'randomColor'){
                 bgColor = rgbRandom;
             }
